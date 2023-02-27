@@ -7,6 +7,6 @@ Check the Figma file for the design specifics.
 
 export default function App() {
     return (
-        <h1>App component</h1>
+        <h1>Test test</h1>
     )
 }
