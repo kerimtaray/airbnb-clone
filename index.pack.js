@@ -399,13 +399,22 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _Navbar = __webpack_require__(16);
+
+var _Navbar2 = _interopRequireDefault(_Navbar);
+
+var _Hero = __webpack_require__(17);
+
+var _Hero2 = _interopRequireDefault(_Hero);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function App() {
     return _react2.default.createElement(
-        "h1",
+        "div",
         null,
-        "Test test2 "
+        _react2.default.createElement(_Navbar2.default, null),
+        _react2.default.createElement(_Hero2.default, null)
     );
 }
 
@@ -30489,6 +30498,76 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+
+/***/ }),
+/* 16 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = Navbar;
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = __webpack_require__(5);
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function Navbar() {
+    return _react2.default.createElement(
+        "nav",
+        null,
+        _react2.default.createElement("img", { src: "../images/airbnb-logo.png", className: "navbar-logo", alt: "airbnb logo" })
+    );
+}
+
+/***/ }),
+/* 17 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = Hero;
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = __webpack_require__(5);
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function Hero() {
+    return _react2.default.createElement(
+        "section",
+        { className: "hero-section" },
+        _react2.default.createElement("img", { src: "../images/photo-grid.png", className: "hero-photo-grid" }),
+        _react2.default.createElement(
+            "h1",
+            { className: "hero-title" },
+            " Online experiences"
+        ),
+        _react2.default.createElement(
+            "p",
+            { className: "hero-text" },
+            " Join unique interactive activities led by one-of-a-kind hosts\u2014all without leaving home. "
+        )
+    );
+}
 
 /***/ })
 /******/ ]);
