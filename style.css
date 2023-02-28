@@ -38,3 +38,26 @@ nav {
 
 }
 
+.card-card {
+    width: 175px;
+    font-size: 12px;
+}
+
+.card-img {
+    width: 100%;
+    border-radius: 9px;
+}
+
+.card-stats {
+    display: flex;
+    align-items: center;
+}
+
+.card-star {
+    width: 15px;
+    height: 15px;
+}
+
+.card-gray {
+    color: #918E9B;
+}

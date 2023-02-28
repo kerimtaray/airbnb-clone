@@ -407,6 +407,10 @@ var _Hero = __webpack_require__(17);
 
 var _Hero2 = _interopRequireDefault(_Hero);
 
+var _Card = __webpack_require__(18);
+
+var _Card2 = _interopRequireDefault(_Card);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function App() {
@@ -414,7 +418,8 @@ function App() {
         "div",
         null,
         _react2.default.createElement(_Navbar2.default, null),
-        _react2.default.createElement(_Hero2.default, null)
+        _react2.default.createElement(_Hero2.default, null),
+        _react2.default.createElement(_Card2.default, null)
     );
 }
 
@@ -30565,6 +30570,67 @@ function Hero() {
             "p",
             { className: "hero-text" },
             " Join unique interactive activities led by one-of-a-kind hosts\u2014all without leaving home. "
+        )
+    );
+}
+
+/***/ }),
+/* 18 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = Card;
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function Card() {
+    return _react2.default.createElement(
+        "div",
+        { className: "card-card" },
+        _react2.default.createElement("img", { src: "../images/katie-zaferes.png", className: "card-img" }),
+        _react2.default.createElement(
+            "div",
+            { className: "card-cardstats" },
+            _react2.default.createElement("img", { className: "card-star", src: "../images/star.png" }),
+            _react2.default.createElement(
+                "span",
+                { className: "card-gray" },
+                "5.0"
+            ),
+            _react2.default.createElement(
+                "span",
+                { className: "card-gray" },
+                "6"
+            ),
+            _react2.default.createElement(
+                "span",
+                { className: "card-gray" },
+                "USA"
+            )
+        ),
+        _react2.default.createElement(
+            "p",
+            null,
+            "Life Lessons with Katie Zaferes"
+        ),
+        _react2.default.createElement(
+            "p",
+            null,
+            _react2.default.createElement(
+                "strong",
+                null,
+                "From $136"
+            ),
+            " a person"
         )
     );
 }
