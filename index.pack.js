@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 6);
+/******/ 	return __webpack_require__(__webpack_require__.s = 10);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -264,9 +264,9 @@ process.umask = function() { return 0; };
 /* WEBPACK VAR INJECTION */(function(process) {
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(10);
+  module.exports = __webpack_require__(14);
 } else {
-  module.exports = __webpack_require__(9);
+  module.exports = __webpack_require__(13);
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
@@ -376,9 +376,9 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 /* WEBPACK VAR INJECTION */(function(process) {
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(14);
+  module.exports = __webpack_require__(18);
 } else {
-  module.exports = __webpack_require__(13);
+  module.exports = __webpack_require__(17);
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
@@ -393,33 +393,50 @@ if (process.env.NODE_ENV === 'production') {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 exports.default = App;
 
 var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Navbar = __webpack_require__(16);
+var _Navbar = __webpack_require__(8);
 
 var _Navbar2 = _interopRequireDefault(_Navbar);
 
-var _Hero = __webpack_require__(17);
+var _Hero = __webpack_require__(7);
 
 var _Hero2 = _interopRequireDefault(_Hero);
 
-var _Card = __webpack_require__(18);
+var _Card = __webpack_require__(6);
 
 var _Card2 = _interopRequireDefault(_Card);
+
+var _data = __webpack_require__(9);
+
+var _data2 = _interopRequireDefault(_data);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function App() {
+    var cards = _data2.default.map(function (item) {
+        return _react2.default.createElement(_Card2.default, _extends({
+            key: item.id
+        }, item));
+    });
+
     return _react2.default.createElement(
         "div",
         null,
         _react2.default.createElement(_Navbar2.default, null),
         _react2.default.createElement(_Hero2.default, null),
-        _react2.default.createElement(_Card2.default, null)
+        _react2.default.createElement(
+            "section",
+            { className: "cards-list" },
+            cards
+        )
     );
 }
 
@@ -462,15 +479,204 @@ if (process.env.NODE_ENV === 'production') {
   // DCE check should happen before ReactDOM bundle executes so that
   // DevTools can report bad minification during injection.
   checkDCE();
-  module.exports = __webpack_require__(8);
+  module.exports = __webpack_require__(12);
 } else {
-  module.exports = __webpack_require__(7);
+  module.exports = __webpack_require__(11);
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
 /* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = Card;
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function Card(props) {
+    var badgeText = void 0;
+    if (props.openSpots === 0) {
+        badgeText = "SOLD OUT";
+    } else if (props.location === "Online") {
+        badgeText = "ONLINE";
+    }
+
+    return _react2.default.createElement(
+        "div",
+        { className: "card" },
+        badgeText && _react2.default.createElement(
+            "div",
+            { className: "card--badge" },
+            badgeText
+        ),
+        _react2.default.createElement("img", {
+            src: "../images/" + props.coverImg,
+            className: "card--image"
+        }),
+        _react2.default.createElement(
+            "div",
+            { className: "card--stats" },
+            _react2.default.createElement("img", { src: "../images/star.png", className: "card--star" }),
+            _react2.default.createElement(
+                "span",
+                null,
+                props.stats.rating
+            ),
+            _react2.default.createElement(
+                "span",
+                { className: "gray" },
+                "(",
+                props.stats.reviewCount,
+                ") \u2022 "
+            ),
+            _react2.default.createElement(
+                "span",
+                { className: "gray" },
+                props.location
+            )
+        ),
+        _react2.default.createElement(
+            "p",
+            { className: "card--title" },
+            props.title
+        ),
+        _react2.default.createElement(
+            "p",
+            { className: "card--price" },
+            _react2.default.createElement(
+                "span",
+                { className: "bold" },
+                "From $",
+                props.price
+            ),
+            " / person"
+        )
+    );
+}
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = Hero;
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function Hero() {
+  return _react2.default.createElement(
+    "section",
+    { className: "hero" },
+    _react2.default.createElement("img", { src: "../images/photo-grid.png", className: "hero--photo" }),
+    _react2.default.createElement(
+      "h1",
+      { className: "hero--header" },
+      "Online Experiences"
+    ),
+    _react2.default.createElement(
+      "p",
+      { className: "hero--text" },
+      "Join unique interactive activities led by one-of-a-kind hosts\u2014all without leaving home."
+    )
+  );
+}
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = Navbar;
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function Navbar() {
+    return _react2.default.createElement(
+        "nav",
+        null,
+        _react2.default.createElement("img", { src: "../images/airbnb-logo.png", className: "nav--logo" })
+    );
+}
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = [{
+    id: 1,
+    title: "Life Lessons with Katie Zaferes",
+    description: "I will share with you what I call \"Positively Impactful Moments of Disappointment.\" Throughout my career, many of my highest moments only came after setbacks and losses. But learning from those difficult moments is what gave me the ability to rise above them and reach my goals.",
+    price: 136,
+    coverImg: "katie-zaferes.png",
+    stats: {
+        rating: 5.0,
+        reviewCount: 6
+    },
+    location: "Online",
+    openSpots: 0
+}, {
+    id: 2,
+    title: "Learn Wedding Photography",
+    description: "Interested in becoming a wedding photographer? For beginner and experienced photographers alike, join us in learning techniques required to leave the happy couple with memories that'll last a lifetime.",
+    price: 125,
+    coverImg: "wedding-photography.png",
+    stats: {
+        rating: 5.0,
+        reviewCount: 30
+    },
+    location: "Online",
+    openSpots: 27
+}, {
+    id: 3,
+    title: "Group Mountain Biking",
+    description: "Experience the beautiful Norwegian landscape and meet new friends all while conquering rugged terrain on your mountain bike. (Bike provided!)",
+    price: 50,
+    coverImg: "mountain-bike.png",
+    stats: {
+        rating: 4.8,
+        reviewCount: 2
+    },
+    location: "Norway",
+    openSpots: 3
+}];
+
+/***/ }),
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -493,7 +699,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 _reactDom2.default.render(_react2.default.createElement(_App2.default, null), document.getElementById("root"));
 
 /***/ }),
-/* 7 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -515,7 +721,7 @@ if (process.env.NODE_ENV !== "production") {
 var React = __webpack_require__(1);
 var _assign = __webpack_require__(2);
 var Scheduler = __webpack_require__(3);
-var tracing = __webpack_require__(15);
+var tracing = __webpack_require__(19);
 
 var ReactSharedInternals = React.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
 
@@ -26763,7 +26969,7 @@ exports.version = ReactVersion;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 8 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27067,7 +27273,7 @@ exports.unstable_renderSubtreeIntoContainer=function(a,b,c,d){if(!rk(c))throw Er
 
 
 /***/ }),
-/* 9 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29408,7 +29614,7 @@ exports.version = ReactVersion;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 10 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29438,7 +29644,7 @@ exports.useLayoutEffect=function(a,b){return S().useLayoutEffect(a,b)};exports.u
 
 
 /***/ }),
-/* 11 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29793,7 +29999,7 @@ exports.unstable_wrap = unstable_wrap;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 12 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29809,7 +30015,7 @@ var b=0;exports.__interactionsRef=null;exports.__subscriberRef=null;exports.unst
 
 
 /***/ }),
-/* 13 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30463,7 +30669,7 @@ exports.unstable_wrapCallback = unstable_wrapCallback;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 14 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30490,150 +30696,19 @@ exports.unstable_wrapCallback=function(a){var b=P;return function(){var c=P;P=b;
 
 
 /***/ }),
-/* 15 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(12);
+  module.exports = __webpack_require__(16);
 } else {
-  module.exports = __webpack_require__(11);
+  module.exports = __webpack_require__(15);
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
-
-/***/ }),
-/* 16 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.default = Navbar;
-
-var _react = __webpack_require__(1);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactDom = __webpack_require__(5);
-
-var _reactDom2 = _interopRequireDefault(_reactDom);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function Navbar() {
-    return _react2.default.createElement(
-        "nav",
-        null,
-        _react2.default.createElement("img", { src: "../images/airbnb-logo.png", className: "navbar-logo", alt: "airbnb logo" })
-    );
-}
-
-/***/ }),
-/* 17 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.default = Hero;
-
-var _react = __webpack_require__(1);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactDom = __webpack_require__(5);
-
-var _reactDom2 = _interopRequireDefault(_reactDom);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function Hero() {
-    return _react2.default.createElement(
-        "section",
-        { className: "hero-section" },
-        _react2.default.createElement("img", { src: "../images/photo-grid.png", className: "hero-photo-grid" }),
-        _react2.default.createElement(
-            "h1",
-            { className: "hero-title" },
-            " Online experiences"
-        ),
-        _react2.default.createElement(
-            "p",
-            { className: "hero-text" },
-            " Join unique interactive activities led by one-of-a-kind hosts\u2014all without leaving home. "
-        )
-    );
-}
-
-/***/ }),
-/* 18 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.default = Card;
-
-var _react = __webpack_require__(1);
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function Card() {
-    return _react2.default.createElement(
-        "div",
-        { className: "card-card" },
-        _react2.default.createElement("img", { src: "../images/katie-zaferes.png", className: "card-img" }),
-        _react2.default.createElement(
-            "div",
-            { className: "card-cardstats" },
-            _react2.default.createElement("img", { className: "card-star", src: "../images/star.png" }),
-            _react2.default.createElement(
-                "span",
-                { className: "card-gray" },
-                "5.0"
-            ),
-            _react2.default.createElement(
-                "span",
-                { className: "card-gray" },
-                "6"
-            ),
-            _react2.default.createElement(
-                "span",
-                { className: "card-gray" },
-                "USA"
-            )
-        ),
-        _react2.default.createElement(
-            "p",
-            null,
-            "Life Lessons with Katie Zaferes"
-        ),
-        _react2.default.createElement(
-            "p",
-            null,
-            _react2.default.createElement(
-                "strong",
-                null,
-                "From $136"
-            ),
-            " a person"
-        )
-    );
-}
 
 /***/ })
 /******/ ]);
